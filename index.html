@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Name | Portfolio</title>
+  <meta name="description" content="A personal portfolio showcasing poetry, photography, science, and other interests.">
+
+  <style>
+    :root {
+      --bg: #f7f5f0;
+      --surface: #fffdf9;
+      --text: #20201e;
+      --muted: #6f6d67;
+      --accent: #536b5c;
+      --accent-light: #dfe7e0;
+      --border: #dedbd3;
+      --max-width: 1050px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Georgia, "Times New Roman", serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(90%, var(--max-width));
+      margin: 0 auto;
+    }
+
+    /* Navigation */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(247, 245, 240, 0.94);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      min-height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .logo {
+      font-size: 1.25rem;
+      font-weight: bold;
+      letter-spacing: 0.03em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+      font-family: Arial, sans-serif;
+      font-size: 0.9rem;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    /* Hero */
+    .hero {
+      min-height: 78vh;
+      display: flex;
+      align-items: center;
+      padding: 90px 0;
+    }
+
+    .hero-content {
+      max-width: 800px;
+    }
+
+    .eyebrow {
+      color: var(--accent);
+      font-family: Arial, sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-size: 0.78rem;
+      font-weight: bold;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-size: clamp(3.2rem, 8vw, 6.5rem);
+      line-height: 0.98;
+      letter-spacing: -0.045em;
+      margin-bottom: 30px;
+    }
+
+    .hero p {
+      color: var(--muted);
+      font-size: 1.2rem;
+      max-width: 680px;
+    }
+
+    .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 32px;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 11px 18px;
+      border: 1px solid var(--text);
+      border-radius: 4px;
+      font-family: Arial, sans-serif;
+      font-size: 0.9rem;
+      transition: 0.2s ease;
+    }
+
+    .button:hover {
+      background: var(--text);
+      color: var(--bg);
+    }
+
+    .button.primary {
+      background: var(--accent);
+      color: white;
+      border-color: var(--accent);
+    }
+
+    .button.primary:hover {
+      opacity: 0.88;
+    }
+
+    /* Sections */
+    section {
+      padding: 100px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .section-heading {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 40px;
+      margin-bottom: 50px;
+    }
+
+    .section-number {
+      font-family: Arial, sans-serif;
+      color: var(--accent);
+      font-size: 0.8rem;
+      font-weight: bold;
+      letter-spacing: 0.12em;
+    }
+
+    h2 {
+      font-size: clamp(2rem, 5vw, 3.4rem);
+      line-height: 1.05;
+      letter-spacing: -0.025em;
+    }
+
+    .section-intro {
+      color: var(--muted);
+      max-width: 650px;
+      margin-top: 15px;
+    }
+
+    /* About */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+    }
+
+    .about-text {
+      font-size: 1.1rem;
+    }
+
+    .interests {
+      display: grid;
+      gap: 14px;
+    }
+
+    .interest {
+      padding: 18px 20px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--accent);
+    }
+
+    .interest strong {
+      display: block;
+      margin-bottom: 3px;
+    }
+
+    .interest span {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    /* Poetry */
+    .poetry-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 22px;
+    }
+
+    .poem {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 30px;
+    }
+
+    .poem h3 {
+      font-size: 1.5rem;
+      margin-bottom: 8px;
+    }
+
+    .poem .date {
+      color: var(--muted);
+      font-family: Arial, sans-serif;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 20px;
+    }
+
+    .poem p {
+      white-space: pre-line;
+      font-style: italic;
+    }
+
+    /* Photography */
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    .photo {
+      aspect-ratio: 4 / 5;
+      background: #ddd;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+
+    .photo:hover img {
+      transform: scale(1.04);
+    }
+
+    .photo-placeholder {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      text-align: center;
+      color: var(--muted);
+      font-family: Arial, sans-serif;
+      font-size: 0.85rem;
+      background: var(--accent-light);
+    }
+
+    /* Science */
+    .science-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 38px;
+      max-width: 850px;
+    }
+
+    .science-card h3 {
+      font-size: 1.7rem;
+      margin-bottom: 12px;
+    }
+
+    .science-card p {
+      color: var(--muted);
+    }
+
+    .science-card a {
+      display: inline-block;
+      margin-top: 20px;
+      color: var(--accent);
+      font-family: Arial, sans-serif;
+      font-size: 0.9rem;
+      font-weight: bold;
+    }
+
+    /* Contact */
+    .contact-box {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 40px;
+    }
+
+    .contact-box p {
+      color: var(--muted);
+      max-width: 600px;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 30px 0;
+      color: var(--muted);
+      font-family: Arial, sans-serif;
+      font-size: 0.8rem;
+    }
+
+    /* Mobile */
+    @media (max-width: 700px) {
+      .nav-inner {
+        min-height: 60px;
+      }
+
+      .nav-links {
+        gap: 12px;
+        font-size: 0.75rem;
+      }
+
+      .hero {
+        min-height: 70vh;
+        padding: 70px 0;
+      }
+
+      section {
+        padding: 70px 0;
+      }
+
+      .section-heading,
+      .about-grid,
+      .poetry-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+      }
+
+      .photo-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .contact-box {
+        display: block;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <div class="container nav-inner">
+      <a href="#top" class="logo">Your Name</a>
+
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#poetry">Poetry</a></li>
+        <li><a href="#photography">Photography</a></li>
+        <li><a href="#science">Science</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main id="top">
+
+    <!-- HERO -->
+    <header class="hero">
+      <div class="container hero-content">
+        <div class="eyebrow">Personal Portfolio</div>
+
+        <h1>Curious about<br>the world.</h1>
+
+        <p>
+          I'm [Your Name], a student interested in mathematics, physics,
+          writing, photography, and the questions that connect seemingly
+          unrelated parts of the world.
+        </p>
+
+        <div class="button-row">
+          <a class="button primary" href="#about">Explore my work</a>
+          <a class="button" href="https://github.com/YOUR-USERNAME" target="_blank">
+            GitHub
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="container">
+        <div class="section-heading">
+          <div class="section-number">01 / ABOUT</div>
+          <div>
+            <h2>A few things I'm curious about.</h2>
+            <p class="section-intro">
+              This site is a collection of the things I spend my time thinking
+              about, creating, and learning.
+            </p>
+          </div>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-text">
+            <p>
+              I enjoy exploring ideas from both analytical and creative
+              perspectives. Mathematics and physics give me ways to understand
+              the structure of the universe, while poetry and photography let
+              me explore experiences that are harder to express with equations.
+            </p>
+            <br>
+            <p>
+              This website is a record of some of those interests—not a résumé,
+              but a place to show what I make and what I find worth exploring.
+            </p>
+          </div>
+
+          <div class="interests">
+            <div class="interest">
+              <strong>Mathematics</strong>
+              <span>Problem solving, calculus, and mathematical ideas.</span>
+            </div>
+
+            <div class="interest">
+              <strong>Physics</strong>
+              <span>Mechanics, cosmology, quantum physics, and big questions.</span>
+            </div>
+
+            <div class="interest">
+              <strong>Poetry</strong>
+              <span>Writing about growth, relationships, uncertainty, and wonder.</span>
+            </div>
+
+            <div class="interest">
+              <strong>Photography</strong>
+              <span>Finding interesting moments and perspectives in ordinary places.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- POETRY -->
+    <section id="poetry">
+      <div class="container">
+        <div class="section-heading">
+          <div class="section-number">02 / POETRY</div>
+          <div>
+            <h2>Words for things equations can't describe.</h2>
+            <p class="section-intro">
+              A selection of original poems.
+            </p>
+          </div>
+        </div>
+
+        <div class="poetry-grid">
+
+          <article class="poem">
+            <h3>The Shortest Tree</h3>
+            <div class="date">Original poem</div>
+            <p>
+From the shortest tree,
+I watched the tallest touch the sky.
+
+They told me to stop reaching.
+They called the clouds too distant.
+
+So I kept growing.
+
+Not because I knew
+I would reach them,
+but because I wanted
+to find out.
+            </p>
+          </article>
+
+          <article class="poem">
+            <h3>Another Poem</h3>
+            <div class="date">Original poem</div>
+            <p>
+Replace this text with another
+original poem of yours.
+
+You can add as many poem cards
+as you want by copying this
+article in the HTML.
+            </p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- PHOTOGRAPHY -->
+    <section id="photography">
+      <div class="container">
+        <div class="section-heading">
+          <div class="section-number">03 / PHOTOGRAPHY</div>
+          <div>
+            <h2>Seeing familiar places differently.</h2>
+            <p class="section-intro">
+              A small gallery of photographs I've taken.
+            </p>
+          </div>
+        </div>
+
+        <div class="photo-grid">
+
+          <!--
+            To add a photograph:
+            1. Put the image file in your GitHub repository.
+            2. Replace the placeholder below with:
+               <img src="images/photo1.jpg" alt="Description of photograph">
+          -->
+
+          <div class="photo">
+            <div class="photo-placeholder">Photo 01<br>Replace with your image</div>
+          </div>
+
+          <div class="photo">
+            <div class="photo-placeholder">Photo 02<br>Replace with your image</div>
+          </div>
+
+          <div class="photo">
+            <div class="photo-placeholder">Photo 03<br>Replace with your image</div>
+          </div>
+
+          <div class="photo">
+            <div class="photo-placeholder">Photo 04<br>Replace with your image</div>
+          </div>
+
+          <div class="photo">
+            <div class="photo-placeholder">Photo 05<br>Replace with your image</div>
+          </div>
+
+          <div class="photo">
+            <div class="photo-placeholder">Photo 06<br>Replace with your image</div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SCIENCE -->
+    <section id="science">
+      <div class="container">
+        <div class="section-heading">
+          <div class="section-number">04 / SCIENCE</div>
+          <div>
+            <h2>Questions I want to understand.</h2>
+            <p class="section-intro">
+              Research, projects, and ideas that have captured my attention.
+            </p>
+          </div>
+        </div>
+
+        <div class="science-card">
+          <h3>The Cosmic Web</h3>
+          <p>
+            I'm interested in how gravity, dark matter, and the early
+            fluctuations of the universe produced the enormous structure we
+            observe today: galaxies connected by filaments, walls, and clusters
+            surrounding vast cosmic voids.
+          </p>
+
+          <a href="#" onclick="alert('Replace this link with your research project.'); return false;">
+            View research →
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="container">
+        <div class="section-heading">
+          <div class="section-number">05 / CONTACT</div>
+          <div>
+            <h2>Let's connect.</h2>
+          </div>
+        </div>
+
+        <div class="contact-box">
+          <p>
+            For questions about my work, projects, or interests, you can find
+            me through the links below.
+          </p>
+
+          <div class="button-row">
+            <a class="button primary" href="mailto:YOUR-EMAIL@example.com">
+              Email
+            </a>
+
+            <a class="button" href="https://github.com/YOUR-USERNAME" target="_blank">
+              GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      © 2026 [Your Name] · Built with HTML & CSS
+    </div>
+  </footer>
+
+</body>
+</html>
