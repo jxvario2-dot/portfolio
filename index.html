@@ -480,50 +480,47 @@
             <div class="date">Original poem</div>
             <p>
  <p>
-    My world’s lights burnt out<br>
-    My world’s lock got stuck<br>
-    My world flooded<br><br>
+    My world’s lights burnt out
+    My world’s lock got stuck
+    My world flooded
 
-    The air escaped my lungs<br>
-    I grabbed for the holds that hid in the shadows<br>
-    But the desperation pulled me under<br><br>
-
-    Many walked past the door<br>
-    From the outside, it was just any other door<br>
-    But inside, the salt water ate away at my body and mind<br><br>
-
-    I heard a knock<br>
-    And a spark returned<br>
-    I swam down to the door and struggled with the lock<br><br>
-
-    Minutes went by<br>
-    Hours went by<br>
-    Was anyone even at the door anymore?<br><br>
-
-    Days went by<br>
-    I struggled with the lock<br>
-    And the floodgates opened<br><br>
-
-    Nobody was there<br>
-    But I was glad I only needed myself<br>
-    I wouldn’t depend on someone else to fix my world<br>
-    I relit my world<br>
-    It was brighter than ever before
-  </p>
+    The air escaped my lungs
+    I grabbed for the holds that hid in the shadows
+    But the desperation pulled me under
+    Many walked past the door
+    From the outside, it was just any other door
+    But inside, the salt water ate away at my body and mind
+ </p>
 
   <div class="poem-more">
     <p>
-      I removed the once broken lock and propped the door open<br>
-      The floors were still wet<br>
-      But just damp<br>
-      And I didn’t want them to dry<br>
-      I finally rested<br><br>
+    I heard a knock
+    And a spark returned
+    I swam down to the door and struggled with the lock
+    Minutes went by
+    Hours went by
+    Was anyone even at the door anymore?
+    Days went by
+    I struggled with the lock
+    And the floodgates opened
 
-      I heard a knock<br>
-      But the knock wasn’t what awoke me<br>
-      It was the light that came with it<br>
-      A light so bright it outshone my own<br>
-      A light so warm it felt like a blanket wrapped around my heart
+    Nobody was there
+    But I was glad I only needed myself
+    I wouldn’t depend on someone else to fix my world
+    I relit my world
+    It was brighter than ever before
+      
+    I removed the once broken lock and propped the door open
+    The floors were still wet
+    But just damp
+    And I didn’t want them to dry
+    I finally rested
+
+    I heard a knock
+    But the knock wasn’t what awoke me
+    It was the light that came with it
+    A light so bright it outshone my own
+    A light so warm it felt like a blanket wrapped around my heart
     </p>
   </div>
 
@@ -667,5 +664,40 @@ article in the HTML.
     </div>
   </footer>
 
+<style>
+  .poem-more {
+    display: none;
+  }
+
+  .continue-reading {
+    background: none;
+    border: none;
+    padding: 0;
+    margin-top: 10px;
+    font-family: inherit;
+    font-size: 0.9rem;
+    color: #5f735f;
+    cursor: pointer;
+  }
+
+  .continue-reading:hover {
+    text-decoration: underline;
+  }
+</style>
+
+<script>
+  function togglePoem(button) {
+    const poemMore = button.previousElementSibling;
+
+    if (poemMore.style.display === "block") {
+      poemMore.style.display = "none";
+      button.textContent = "Continue reading →";
+    } else {
+      poemMore.style.display = "block";
+      button.textContent = "Show less ↑";
+    }
+  }
+</script>
+  
 </body>
 </html>
